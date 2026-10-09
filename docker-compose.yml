@@ -1,6 +1,7 @@
 services:
   probe:
     image: alpine:3.20
+    network_mode: bridge
     command: ["sh", "-c", "cat /probe/hello.txt; env | grep ^FROM_; sleep 3600"]
     env_file: [./probe.env]
     environment:
