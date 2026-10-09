@@ -1,0 +1,9 @@
+services:
+  probe:
+    image: alpine:3.20
+    command: ["sh", "-c", "cat /probe/hello.txt; env | grep ^FROM_; sleep 3600"]
+    env_file: [./probe.env]
+    environment:
+      - FROM_STACKENV=${FROM_STACKENV}
+    volumes:
+      - ./hello.txt:/probe/hello.txt:ro
